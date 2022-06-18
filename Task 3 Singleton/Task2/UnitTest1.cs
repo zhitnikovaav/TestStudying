@@ -25,14 +25,14 @@ namespace Task2
         [TestCase("performance_glitch_user", "secret_sauce")]
         public void LogInTest(string usersLogin, string usersPassword)
         {
-            var logInPage = AuthorizationPageObject.;
+            var logInPage = AuthorizationPageObject.GetInstance;
             logInPage.LogIn(usersLogin, usersPassword);
         }
 
         [Test]
         public void PerformanceGlitchUser(string usersLogin, string usersPassword)
         {
-            
+            throw new NotImplementedException();
         }
         
         [TearDown]
