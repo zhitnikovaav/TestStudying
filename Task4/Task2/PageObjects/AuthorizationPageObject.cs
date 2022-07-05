@@ -1,16 +1,14 @@
 ﻿using System;
-using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 
 namespace Task2.PageObjects
 {
-    public sealed class AuthorizationPageObject
+    public class AuthorizationPageObject
     {
-        private readonly IWebDriver _webdriver;
+        private IWebDriver _webdriver;
 
-        private readonly By _loginInputButton = By.XPath("//input[@name='user-name']");
-        private readonly By _passwordInputButton = By.XPath("//input[@name = 'password']");
+        private readonly By _loginInputButton = By.Name("user-name");
+        private readonly By _passwordInputButton = By.Id("password");
         private readonly By _loginButton = By.XPath("//input[@name = 'login-button']");
 
         public AuthorizationPageObject(IWebDriver webdriver)
@@ -20,6 +18,11 @@ namespace Task2.PageObjects
 
         public InventoryPageObject LogIn(string login, string password)
         {
+            if (login is null || password is null)
+            {
+                throw new ArgumentNullException(nameof(password), "login or password is null");
+            }
+            _webdriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             _webdriver.FindElement(_loginInputButton).SendKeys(login);
             _webdriver.FindElement(_passwordInputButton).SendKeys(password);
             _webdriver.FindElement(_loginButton).Click();
