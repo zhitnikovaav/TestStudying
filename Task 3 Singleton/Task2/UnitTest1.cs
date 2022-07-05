@@ -25,5 +25,13 @@ namespace Task2
             WebDriverWait wait = new WebDriverWait(Browser.Driver, TimeSpan.FromSeconds(10));
             wait.Until(e => e.FindElement(By.Id(("react-burger-menu-btn"))));
         }
+
+        [Test]
+        public void AddToCartTest()
+        {
+            var logInPage = new AuthorizationPageObject(Browser.Driver);
+            logInPage.LogIn("standard_user", "secret_sauce");
+            InventoryPageObject.AddToCart();
+        }
     }
 }

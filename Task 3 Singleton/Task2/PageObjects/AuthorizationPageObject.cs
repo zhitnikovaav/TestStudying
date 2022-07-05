@@ -10,7 +10,7 @@ namespace Task2.PageObjects
         private readonly IWebDriver _webdriver;
 
         private readonly By _loginInputButton = By.XPath("//input[@name='user-name']");
-        private readonly By _passwordInputButton = By.XPath("//input[@name = 'password']");
+        private readonly By _passwordInputButton = By.Id("password");
         private readonly By _loginButton = By.XPath("//input[@name = 'login-button']");
 
         public AuthorizationPageObject(IWebDriver webdriver)

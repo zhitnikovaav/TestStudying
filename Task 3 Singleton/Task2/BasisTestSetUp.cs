@@ -14,10 +14,10 @@ namespace Task2
             Browser.Driver.Manage().Window.Maximize();
         }
         
-        [TearDown]
+        /* [TearDown]
         public void TearDown()
         {
-            Browser.Driver.Close();
-        }
+            Browser.Driver.Quit();
+        }*/
     }
 }
